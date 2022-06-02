@@ -2,14 +2,10 @@ const {Router} = require('express');
 const mysqlConnection = require('../database');
 const router = Router();
 
-router.get('/', (req, res) => {
-    mysqlConnection.query('SELECT * FROM viewPintura', (err, rows, fields) => {
+router.get('/api/pinturas', (req, res) => {
+    mysqlConnection.query('SELECT * FROM viewpintura ORDER BY titulo', (err, rows, fields) => {
         if(!err){
-
-            const pinturas = rows;
-            console.log(rows);
-            res.render('index', { pinturas });
-
+            res.json(rows);
         }else{
             console.log(err);
         }

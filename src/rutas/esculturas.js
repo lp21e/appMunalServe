@@ -3,7 +3,7 @@ const mysqlConnection = require('../database');
 const router = Router();
 
 router.get('/api/esculturas', (req, res) => {
-    mysqlConnection.query('SELECT * FROM viewEscultura ORDER BY titulo', (err, rows, fields) => {
+    mysqlConnection.query('SELECT * FROM viewescultura ORDER BY titulo', (err, rows, fields) => {
         if(!err){
             res.json(rows);
         }else{
